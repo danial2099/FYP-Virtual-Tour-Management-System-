@@ -1,0 +1,54 @@
+﻿
+@{
+    if (Session["AdminNo"] == null)
+    {
+        Response.Redirect("~/Login2/Index");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dashboard</title>
+    <style>
+        .logout {
+            position: absolute;
+            top: 70px;
+            right:30px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Admin's Dashboard</h1>
+        <h3>Hello @Session["Name"].ToString() </h3>
+    </div>
+    
+    <div >
+        <table>
+        <tr>
+            <td>
+                <a href="@Url.Action("IndexList", "AdminDashboard")">
+                <input type="button" value="List of Student Access" />
+                </a>
+            </td>
+            <tr></tr>
+           
+            <tr></tr>
+            <td>
+                <a href="@Url.Action("Index", "Media")">
+                <input type="button" value="Media Management" />
+                </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+     
+    <div class="logout">
+    <a href="@Url.Action("Logout", "Login2")">Logout</a> 
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+    if (Session["MatricNo"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dashboard</title>
+</head>
+<body>
+    <div>
+        <h1>Dashboard</h1>
+        <h3>Hello @Session["Name"].ToString() </h3>
+    </div>
+    <table>
+        <tr>
+        <tr>
+            <td>
+                <a href="@Url.Action("List", "DashBoard")">Go to Virtual Tour List</a>
+            </td>
+        </tr>
+
+    </table>
+    <a href="@Url.Action("Logout", "Login")">Logout</a>
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<WebApplication2.Models.Medium>
+
+@{
+    ViewBag.Title = "List";
+    if (Session["MatricNo"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<h1>Dashboard</h1>
+<h3>Hello @Session["Name"].ToString() </h3>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.URL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datetime)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a href="@Html.DisplayFor(modelItem => item.URL)">@Html.DisplayFor(modelItem => item.URL)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.datetime)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.id })
+                </td>*@
+        </tr>
+    }
+
+</table>
+<a href="@Url.Action("Logout", "Login")">Logout</a>

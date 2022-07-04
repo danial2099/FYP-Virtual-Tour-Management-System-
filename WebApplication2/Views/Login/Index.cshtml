@@ -1,0 +1,103 @@
+﻿@model WebApplication2.Models.User
+
+@{
+  
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login Page</title>
+    <style>
+        #login-div {
+            position: relative;
+            margin: 30px auto;
+            padding: 20px 20px 20px;
+            width: 510px;
+            background: white;
+            border-radius: 3px;
+            
+        }
+
+        }
+        .field-validation-error{
+            color:red;
+        }
+        .title {
+            text-align: center;
+            color:antiquewhite;
+            position: relative;
+        }
+        body {
+            color: #404040;
+            background-color:maroon;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 class="title"> WELCOME TO THE LOGIN PAGE</h1>
+    <p class="title"> Login for Student Access</p>
+    <div id="login-div">
+        @using (Html.BeginForm("Autherize","Login",FormMethod.Post))
+            {
+        <table> @*class ="table">*@
+            <tr>
+                <td></td>
+                @*<td style="text-decoration:underline"> Login for Student Access</td>*@
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.MatricNo)</td>
+                <td>@Html.EditorFor(model => model.MatricNo)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>@Html.ValidationMessageFor(model => model.MatricNo) </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Password)</td>
+                <td>@Html.EditorFor(model => model.Password)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>@Html.ValidationMessageFor(model => model.Password) </td>
+            </tr>
+            <tr>
+                <td colspan="2"><label class="field-validation-error">@Html.DisplayFor(model => model.LoginErrorMessage) </label> </td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" ,name="name " ,value="Login" />
+                   <a href="@Url.Action("AddOrEdit","User")">
+                        Register New User
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+             </tr>
+             <tr>
+                 <td>
+                     <a href="@Url.Action("Index","Home")">
+                         Back to previous page
+                     </a>
+                </td>
+                     <td></td>
+                <td>
+                    <a href="@Url.Action("Index","Login2")">
+                        Login As Admin
+                    </a>
+                </td>
+            </tr>
+        </table>
+            }
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
